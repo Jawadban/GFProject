@@ -80,28 +80,17 @@ var params = {
 };
 
 //Get method route where if there is no address provided then we are going to feed params as defailt value.
-app.get('/api/restaurants', function (req, res){
+app.post('/api/restaurants/stageToFriends', function (req, res){
   console.log(req.body);
-  var reqParameters = function(){
-    if (req.body.address) {
-      return {
-        location: req.body.address,
-        term: 'food',
-        limit: 10
-      }
-    } else {
-      return params;
-    }
-  }
-  requestYelp(reqParameters(), function(err, response, body){
-    //console.log(body);
-    res.send(body);
-  });
+  // requestYelp(req.body, function(err, response, body){
+  //   //console.log(body);
+  //   res.send(body);
+  // });
 });
 
 //Post method route where if there is no address provided then we are going to feed params as defailt value.
 app.post('/api/restaurants', function (req, res){
-  console.log(req.body);
+  //console.log(req.body);
   var reqParameters = function(){
     if (req.body.address) {
       return {

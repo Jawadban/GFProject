@@ -8,20 +8,6 @@ app.controller('HomeController', ['$scope', 'dataFactory', function($scope, data
   };
 
   // Make POST request to Server API
-  // function getRestaurantsByAddress() {
-  //   var postData = {
-  //     firstName: $scope.firstName,
-  //     lastName: $scope.lastName,
-  //     address: $scope.address,
-  //     time: $scope.time
-  //   };
-  //   dataFactory.getRestaurantsByAddress(postData)
-  //     .then(function (response) {
-  //       $scope.response = response.data;
-  //     }, function (error) {
-  //         $scope.response = 'Unable to load customer data: ' + error.message;
-  //     });
-  // }
   var dataArr = [];
   function getRestaurantsByAddress() {
     var clientData = {
@@ -47,6 +33,21 @@ app.controller('HomeController', ['$scope', 'dataFactory', function($scope, data
       }, function (error) {
           $scope.response = 'Unable to load customer data: ' + error.message;
       });
+  }
+
+  var user = [$scope.firstName, $scope.lastName]
+
+  var stageArr = [];
+  $scope.stageToFriends = function () {
+    stageArr = [];
+    dataArr.map(function(item){
+      if (item.custChoice) {
+        //item.custChoice = false;
+        stageArr.push(item);
+      }
+    });
+    dataFactory.stageToFriends(stageArr)
+    console.log(stageArr);
   }
 
 
