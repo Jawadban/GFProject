@@ -1,12 +1,15 @@
 <div ng-controller="HomeController" class="container-fluid">
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
+
       <h3>{{statmentOne}}</h3>
       <form ng-submit="submit()">
+
         <div class="form-group">
           <label for="name">Name:</label>
           <input type="text" class="form-control" placeholder="i.e. 'Bill Max Abyi Jawad'" ng-model="name">
         </div>
+
         <ul ng-repeat="restaurant in response">
           <label class="checkbox">
             <input type="checkbox" ng-model='restaurant.custChoice'> <!-- this is where the checkbox input ng-model will toggle the userChoice from false to true -->
@@ -17,15 +20,14 @@
           </label>
         </ul>
         <button type="submit" class="btn btn-primary">Submit</button>
+
       </form>
 
       <hr />
-      <!-- <h3>Please Check Mark Resturants To Send To Your Friends</h3>
-      <h4>These are top 10 nearest to the address you entered</h4> -->
+      
       <h4>{{statmentTwo}}</h4>
 <!--       <button class="btn" ng-click="stageToFriends()">Submit to Server</button>
- -->      <!-- <h3>Server JSON Response</h3>
-      <pre>{{ response }}</pre> -->
+ -->      <!-- <pre>{{ response }}</pre> -->
 
     </div> <!-- .col-md-6 -->
 

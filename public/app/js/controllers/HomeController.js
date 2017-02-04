@@ -8,6 +8,24 @@ app.controller('HomeController', ['$scope', 'dataFactory', function($scope, data
   };
 
   // Make POST request to Server API
+  // function getRestaurantsByAddress() {
+  //   var postData = {
+  //     firstName: $scope.firstName,
+  //     lastName: $scope.lastName,
+  //     address: $scope.address,
+  //     time: $scope.time
+  //   };
+  //   dataFactory.getRestaurantsByAddress(postData)
+  //     .then(function (response) {
+  //       $scope.response = response.data;
+  //     }, function (error) {
+  //         $scope.response = 'Unable to load customer data: ' + error.message;
+  //     });
+  // }
+
+
+  // var clientDataNew = {};
+  // var userName = clientDataNew.firstName + ' ' + clientDataNew.lastName;
   var dataArr = [];
   function getRestaurantsByAddress() {
     var clientData = {
@@ -16,6 +34,7 @@ app.controller('HomeController', ['$scope', 'dataFactory', function($scope, data
       address: $scope.address,
       time: $scope.time
     };
+    clientDataNew = clientData;
     dataFactory.getRestaurantsByAddress(clientData)
       .then(function (response) {
         
@@ -35,21 +54,29 @@ app.controller('HomeController', ['$scope', 'dataFactory', function($scope, data
       });
   }
 
-  var user = [$scope.firstName, $scope.lastName]
+
+  $scope.phoneNums = ['+5102560992', '+4153131243'];
+
+  $scope.addPhoneNum = function() {
+      $scope.phoneNums.push('+' + $scope.phoneNumber.toString());
+      $scope.phoneNumber = '';
+    };
 
   var stageArr = [];
+  var stageObj = {};
   $scope.stageToFriends = function () {
     stageArr = [];
+    stageObj = {};
     dataArr.map(function(item){
       if (item.custChoice) {
         //item.custChoice = false;
         stageArr.push(item);
       }
     });
-    dataFactory.stageToFriends(stageArr)
-    console.log(stageArr);
+    stageObj = {threeChoices: stageArr, phoneNumbers: $scope.phoneNums}
+    dataFactory.stageToFriends(stageObj)
+    console.log(stageObj);
   }
-
 
 
   // This is a GET request not currently used but left for example if needed

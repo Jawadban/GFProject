@@ -35,7 +35,7 @@
           </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit (POST)</button>
-        <button type="button" class="btn btn-success" ng-click="getRequest()">Sample (GET)</button>
+       <!--  <button type="button" class="btn btn-success" ng-click="getRequest()">Sample (GET)</button> -->
       </form>
 
       <hr />
@@ -53,6 +53,22 @@
 <!--      <IMG ng-src={{restaurant.pic}}></IMG>
 -->     </label>
       </ul>
+
+      <ul class="unstyled">
+        <li ng-repeat="phoneNum in phoneNums">
+          <label class="checkbox">
+            <span>{{phoneNum}}</span>
+          </label>
+        </li>
+      </ul>
+
+      <form ng-submit="addPhoneNum()">
+        <input type="text" ng-model="phoneNumber"  size="30" placeholder="Add Friend's Phone #">
+        <input class="btn-primary" type="submit" value="add">
+      </form>
+
+
+
       <button class="btn" ng-click="stageToFriends()">Submit to Friend</button>
       <!-- <h3>Server JSON Response</h3>
       <pre>{{ response }}</pre> -->
